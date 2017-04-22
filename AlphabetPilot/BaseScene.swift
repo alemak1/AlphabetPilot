@@ -14,7 +14,59 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
     
     
     //MARK: EntityManager
-    var entityManger: EntityManager!
+    var entityManager: EntityManager!
+    
+    
+    //MARK: LetterArray and Related Spawning Variables; each letter entity in the letter array has an associated boolean flag that is set to true if the letter has already been spawned; letters that have already been spawned will be repositioned above the screen in the implementation of the contact logic
+    
+    typealias LetterTuple = (Letter,Bool)
+    
+    var letterEntityArray: [LetterTuple] = [
+        (Letter(letterCategory: .letterA), false),
+        (Letter(letterCategory: .letterB), false),
+        (Letter(letterCategory: .letterC), false),
+        (Letter(letterCategory: .letterD), false),
+        (Letter(letterCategory: .letterE), false),
+        (Letter(letterCategory: .letterF), false),
+        (Letter(letterCategory: .letterG), false),
+        (Letter(letterCategory: .letterH), false),
+        (Letter(letterCategory: .letterI), false),
+        (Letter(letterCategory: .letterJ), false),
+        (Letter(letterCategory: .letterK), false),
+        (Letter(letterCategory: .letterL), false),
+        (Letter(letterCategory: .letterM), false),
+        (Letter(letterCategory: .letterN), false),
+        (Letter(letterCategory: .letterO), false),
+        (Letter(letterCategory: .letterP), false),
+        (Letter(letterCategory: .letterQ), false),
+        (Letter(letterCategory: .letterR), false),
+        (Letter(letterCategory: .letterS), false),
+        (Letter(letterCategory: .letterT), false),
+        (Letter(letterCategory: .letterU), false),
+        (Letter(letterCategory: .letterV), false),
+        (Letter(letterCategory: .letterW), false),
+        (Letter(letterCategory: .letterX), false),
+        (Letter(letterCategory: .letterY), false),
+        (Letter(letterCategory: .letterZ), false),
+
+    ]
+    
+    var randomLetterIndex: Int{
+        let randSrc = GKMersenneTwisterRandomSource()
+        let randDst = GKRandomDistribution(randomSource: randSrc, lowestValue: 0, highestValue: letterEntityArray.count-1)
+        return randDst.nextInt()
+    }
+    
+    var allLettersSpawned: Bool = false
+    
+    private func allLetterSpawned() -> Bool{
+        return letterEntityArray.map({ return $0.1 }).reduce(true){ return $0 && $1 }
+    }
+    
+    let customQueue = OperationQueue()
+    
+    var letterSpawnInterval: TimeInterval = 2.00
+    var letterSpawnFrameCount: TimeInterval = 0.00
     
     //MARK: Main Player 
     
@@ -45,6 +97,7 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
     override func didMove(to view: SKView) {
         super.didMove(to: view)
         self.physicsWorld.contactDelegate = self
+        self.physicsWorld.gravity = CGVector(dx: 0.00, dy: -1.00)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         worldNode = SKNode()
@@ -67,10 +120,12 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         islandNode.physicsBody?.contactTestBitMask = CollisionConfiguration.Barrier.contactMask
         worldNode.addChild(islandNode)
         
-        entityManger = EntityManager(scene: self)
+        entityManager = EntityManager(scene: self)
 
         player = Player()
-        entityManger.add(player)
+        entityManager.add(player)
+        
+    
         
     }
     
@@ -100,10 +155,86 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         
         // Calculate time since last update
         let dt = currentTime - self.lastUpdateTime
+        letterSpawnFrameCount += dt
         
-        entityManger.update(dt)
+        if(letterSpawnFrameCount > letterSpawnInterval){
+            
+            
+            //Consider how to dispatch this code to an synchronous queue
+            
+        
+            customQueue.addOperation {
+                
+               if(self.allLettersSpawned) { return }
+                
+                var isNewLetter: Bool
+                
+                repeat{
+                    
+                    isNewLetter = true
+                    
+                    let newRandomLetterIndex = self.randomLetterIndex
+                    var randomLetterTuple = self.letterEntityArray[newRandomLetterIndex]
+                    
+                    if(!randomLetterTuple.1){
+                        DispatchQueue.main.sync {
+                            let randomLetter = randomLetterTuple.0
+                            self.entityManager.add(randomLetter)
+                            self.setLetterStatusToFalse(letterTuple: &self.letterEntityArray[newRandomLetterIndex])
+                        }
+                       
+                    } else {
+                        isNewLetter = false
+                    }
+                }while(!isNewLetter)
+            
+            }
+        
+            if(allLetterSpawned()){
+                allLettersSpawned = true
+            }
+            letterSpawnFrameCount = 0
+        }
+        
+        entityManager.update(dt)
 
         self.lastUpdateTime = currentTime
     }
+    
+    
+    
 }
+
+extension BaseScene{
+    
+    
+    //Function should be dispatched asynchronously to a concurrent queue to prevent blocing of the main thread since the function will take longer as the number of letter available for spawning decreases
+    func spawnRandomLetterFromPreloadedArray(){
+        
+            var isNewLetter: Bool
+            
+            repeat{
+                
+                isNewLetter = true
+                
+                var newRandomLetterIndex = randomLetterIndex
+                var randomLetterTuple = letterEntityArray[newRandomLetterIndex]
+                
+                if(!randomLetterTuple.1){
+                    let randomLetter = randomLetterTuple.0
+                    entityManager.add(randomLetter)
+                    setLetterStatusToFalse(letterTuple: &letterEntityArray[newRandomLetterIndex])
+                } else {
+                    isNewLetter = false
+                }
+            }while(!isNewLetter)
+        }
+    
+    //Tuple are value-types, so the truth-value of the boolean flag can be modified by passing the tuple into a function by reference; using a mutating method in a struct can also serve the same purpose
+    func setLetterStatusToFalse(letterTuple: inout LetterTuple){
+            letterTuple.1 = true
+    }
+}
+
+
 

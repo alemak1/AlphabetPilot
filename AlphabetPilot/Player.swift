@@ -44,7 +44,9 @@ class Player: GKEntity{
  
         **/
         let physicsBody = SKPhysicsBody(texture: texture, size: texture.size())
-        physicsBody.affectedByGravity = true 
+        physicsBody.affectedByGravity = true
+        physicsBody.allowsRotation = false
+        physicsBody.mass = 1.00
         let physicsComponent = PhysicsComponent(physicsBody: physicsBody, collisionConfiguration: CollisionConfiguration.Player)
         addComponent(physicsComponent)
         
@@ -58,6 +60,12 @@ class Player: GKEntity{
         let animationComponent = AnimationComponent(animations: Player.animationsDict)
         addComponent(animationComponent)
         animationComponent.requestedAnimation = .moving
+        
+        
+        //The player is scaled down after the physics body is added so that the physics body scaled down along with the node texture
+        
+        renderComponent.node.xScale *= 0.50
+        renderComponent.node.yScale *= 0.50
     }
     
     required init?(coder aDecoder: NSCoder) {

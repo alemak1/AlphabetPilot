@@ -36,12 +36,12 @@ class RandomGenerator{
         
     }
     
-    static func getRandomXPos() -> Int{
+    static func getRandomXPos(adjustmentFactor: CGFloat = 1.00) -> Int{
         
         let randomSource = GKLinearCongruentialRandomSource()
         
-        let minValue = -Int(ScreenSizeConstants.HalfScreenWidth)
-        let maxValue = Int(ScreenSizeConstants.HalfScreenWidth)
+        let minValue = -Int(ScreenSizeConstants.HalfScreenWidth*adjustmentFactor)
+        let maxValue = Int(ScreenSizeConstants.HalfScreenWidth*adjustmentFactor)
         
         let randomDist = GKShuffledDistribution(randomSource: randomSource, lowestValue: minValue, highestValue: maxValue)
         

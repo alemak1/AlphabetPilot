@@ -54,7 +54,7 @@ class EntityManager{
         entities.insert(entity)
         
         if let spriteNode = entity.component(ofType: RenderComponent.self)?.node{
-            scene.worldNode.addChild(spriteNode)
+            spriteNode.move(toParent: scene.worldNode)
         }
         
         for componentSystem in componentSystems{

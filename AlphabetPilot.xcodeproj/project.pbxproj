@@ -25,6 +25,7 @@
 		BD2BF4501EAAFE3B00CF3595 /* PhysicsContactUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF44F1EAAFE3B00CF3595 /* PhysicsContactUtility.swift */; };
 		BD2BF4521EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4511EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift */; };
 		BD2BF4541EAB017500CF3595 /* NodeNameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4531EAB017500CF3595 /* NodeNameComponent.swift */; };
+		BD3149A21EAB5D9A00DB34EE /* LetterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */; };
 		BD72F5961EA9FC810036168C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72F5951EA9FC810036168C /* AppDelegate.swift */; };
 		BD72F5981EA9FC810036168C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD72F5971EA9FC810036168C /* GameScene.sks */; };
 		BD72F59A1EA9FC810036168C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD72F5991EA9FC810036168C /* Actions.sks */; };
@@ -58,6 +59,7 @@
 		BD2BF44F1EAAFE3B00CF3595 /* PhysicsContactUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsContactUtility.swift; sourceTree = "<group>"; };
 		BD2BF4511EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseScene+SKPhysicsContactDelegate.swift"; sourceTree = "<group>"; };
 		BD2BF4531EAB017500CF3595 /* NodeNameComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeNameComponent.swift; sourceTree = "<group>"; };
+		BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterNode.swift; sourceTree = "<group>"; };
 		BD72F5921EA9FC810036168C /* AlphabetPilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphabetPilot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD72F5951EA9FC810036168C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD72F5971EA9FC810036168C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 			name = Gameutil;
 			sourceTree = "<group>";
 		};
+		BD3149A01EAB5D7700DB34EE /* NodeSubclasses */ = {
+			isa = PBXGroup;
+			children = (
+				BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */,
+			);
+			name = NodeSubclasses;
+			sourceTree = "<group>";
+		};
 		BD72F5891EA9FC810036168C = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 		BD72F5941EA9FC810036168C /* AlphabetPilot */ = {
 			isa = PBXGroup;
 			children = (
+				BD3149A01EAB5D7700DB34EE /* NodeSubclasses */,
 				BD2BF4441EAAF38300CF3595 /* Gameutil */,
 				BD72F5B41EAA0B150036168C /* Entities */,
 				BD72F5B31EAA0B0F0036168C /* Components */,
@@ -245,6 +256,7 @@
 				BD23AC9A1EAB1C150099010D /* EntityManager.swift in Sources */,
 				BD23ACA41EAB27D20099010D /* OrientationComponent.swift in Sources */,
 				BD2BF44A1EAAF63800CF3595 /* CoreMotionInputComponent.swift in Sources */,
+				BD3149A21EAB5D9A00DB34EE /* LetterNode.swift in Sources */,
 				BD23ACA61EAB28D30099010D /* AnimationComponent.swift in Sources */,
 				BD2BF44C1EAAF65D00CF3595 /* Letter.swift in Sources */,
 				BD72F5B61EAA0D340036168C /* BaseScene+Pause.swift in Sources */,
