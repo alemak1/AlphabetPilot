@@ -78,11 +78,11 @@ extension CollisionConfiguration: OptionSet{
     
     static let definedContacts: [CollisionConfiguration:[CollisionConfiguration]] = [
         CollisionConfiguration.Player :
-            [CollisionConfiguration.Portal, CollisionConfiguration.Collectible, CollisionConfiguration.Letter, CollisionConfiguration.Enemy, CollisionConfiguration.NonCollidingEnemy],
-        
+            [CollisionConfiguration.Portal, CollisionConfiguration.Collectible, CollisionConfiguration.Letter, CollisionConfiguration.Enemy, CollisionConfiguration.NonCollidingEnemy, CollisionConfiguration.Barrier],
+        CollisionConfiguration.Barrier : [CollisionConfiguration.Player],
         CollisionConfiguration.NonCollidingEnemy:
             [CollisionConfiguration.Player],
-        
+        CollisionConfiguration.Letter : [CollisionConfiguration.Barrier,CollisionConfiguration.Player],
         CollisionConfiguration.Portal :      [CollisionConfiguration.Player]
     ]
     

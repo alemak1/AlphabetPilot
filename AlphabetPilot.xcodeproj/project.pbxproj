@@ -26,6 +26,8 @@
 		BD2BF4521EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4511EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift */; };
 		BD2BF4541EAB017500CF3595 /* NodeNameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4531EAB017500CF3595 /* NodeNameComponent.swift */; };
 		BD3149A21EAB5D9A00DB34EE /* LetterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */; };
+		BD3149A41EAB827400DB34EE /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A31EAB827400DB34EE /* JumpComponent.swift */; };
+		BD3149A61EAB847000DB34EE /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */; };
 		BD72F5961EA9FC810036168C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72F5951EA9FC810036168C /* AppDelegate.swift */; };
 		BD72F5981EA9FC810036168C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD72F5971EA9FC810036168C /* GameScene.sks */; };
 		BD72F59A1EA9FC810036168C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD72F5991EA9FC810036168C /* Actions.sks */; };
@@ -60,6 +62,8 @@
 		BD2BF4511EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseScene+SKPhysicsContactDelegate.swift"; sourceTree = "<group>"; };
 		BD2BF4531EAB017500CF3595 /* NodeNameComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeNameComponent.swift; sourceTree = "<group>"; };
 		BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterNode.swift; sourceTree = "<group>"; };
+		BD3149A31EAB827400DB34EE /* JumpComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
+		BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		BD72F5921EA9FC810036168C /* AlphabetPilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphabetPilot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD72F5951EA9FC810036168C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD72F5971EA9FC810036168C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				BD23AC9D1EAB1F6F0099010D /* CoreMotionHelper.swift */,
 				BD23AC9F1EAB21720099010D /* RandomGenerator.swift */,
 				BD23ACA11EAB21B20099010D /* Constants.swift */,
+				BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */,
 			);
 			name = Gameutil;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				BD23AC971EAB18A50099010D /* PortraitMotionResponderComponent.swift */,
 				BD23ACA31EAB27D20099010D /* OrientationComponent.swift */,
 				BD23ACA51EAB28D30099010D /* AnimationComponent.swift */,
+				BD3149A31EAB827400DB34EE /* JumpComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD3149A61EAB847000DB34EE /* NotificationNameExtension.swift in Sources */,
 				BD72F59C1EA9FC810036168C /* GameScene.swift in Sources */,
 				BD23ACA21EAB21B20099010D /* Constants.swift in Sources */,
 				BD72F5AE1EA9FC930036168C /* PauseOverlayNode.swift in Sources */,
@@ -269,6 +276,7 @@
 				BD23AC9E1EAB1F6F0099010D /* CoreMotionHelper.swift in Sources */,
 				BD72F5B21EAA06590036168C /* BaseScene.swift in Sources */,
 				BD23ACA01EAB21720099010D /* RandomGenerator.swift in Sources */,
+				BD3149A41EAB827400DB34EE /* JumpComponent.swift in Sources */,
 				BD23AC981EAB18A50099010D /* PortraitMotionResponderComponent.swift in Sources */,
 				BD2BF4541EAB017500CF3595 /* NodeNameComponent.swift in Sources */,
 				BD2BF4431EAAF2FC00CF3595 /* PhysicsComponent.swift in Sources */,

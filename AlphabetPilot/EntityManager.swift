@@ -27,7 +27,9 @@ class EntityManager{
         
         let animationComponent = GKComponentSystem(componentClass: AnimationComponent.self)
         
-        return [portraitMotionResponderComponentX,orientationComponent, animationComponent, agentComponent]
+        let jumpComponent = GKComponentSystem(componentClass: JumpComponent.self)
+        
+        return [portraitMotionResponderComponentX,orientationComponent, animationComponent, agentComponent, jumpComponent]
     }()
     
     

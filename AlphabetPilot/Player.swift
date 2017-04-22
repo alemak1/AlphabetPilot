@@ -40,6 +40,10 @@ class Player: GKEntity{
         renderComponent.node = SKSpriteNode(texture: texture, color: .clear, size: texture.size())
         addComponent(renderComponent)
         
+        
+        let nodeNameComponent = NodeNameComponent(nodeName: "PlayerNode")
+        addComponent(nodeNameComponent)
+        
         /**  Add a physics body component whose physics body dimensions are based on that of the node texture
  
         **/
@@ -62,10 +66,41 @@ class Player: GKEntity{
         animationComponent.requestedAnimation = .moving
         
         
+        let jumpComponent = JumpComponent()
+        addComponent(jumpComponent)
+        
+        let contactHandlerComponent = ContactHandlerComponent(categoryContactHandler: {
+        otherBodyCategoryMask in
+            switch(otherBodyCategoryMask){
+            case CollisionConfiguration.Barrier.categoryMask:
+                print("Player is touching barrier")
+                jumpComponent.canJump = true
+                break
+            default:
+                print("No contact logic implemented")
+            }
+        }, nodeContactHandler: nil, categoryEndContactHandler: {
+        
+                otherBodyCategoryMask in
+            
+            switch(otherBodyCategoryMask){
+            case CollisionConfiguration.Barrier.categoryMask:
+                print("Player is no longer touching the barrier")
+                jumpComponent.canJump = false
+                break
+            default:
+                print("No contact logic implemented")
+            }
+        
+        }, nodeEndContactHandler: nil)
+        
         //The player is scaled down after the physics body is added so that the physics body scaled down along with the node texture
         
         renderComponent.node.xScale *= 0.50
         renderComponent.node.yScale *= 0.50
+        
+       
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

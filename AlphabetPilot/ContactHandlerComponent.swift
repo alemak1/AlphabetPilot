@@ -24,14 +24,23 @@ class ContactHandlerComponent: GKComponent{
     var categoryContactHandler: CategoryContactHandler?
     var nodeContactHandler: NodeContactHandler?
     
-    init(categoryContactHandler: CategoryContactHandler?, nodeContactHandler: NodeContactHandler? ) {
+    var categoryEndContactHandler: CategoryContactHandler?
+    var nodeEndContactHandler: NodeContactHandler?
+    
+    init(categoryContactHandler: CategoryContactHandler?, nodeContactHandler: NodeContactHandler?, categoryEndContactHandler: CategoryContactHandler?, nodeEndContactHandler: NodeContactHandler?) {
         self.categoryContactHandler = categoryContactHandler
         self.nodeContactHandler = nodeContactHandler
+        
+        self.categoryEndContactHandler = categoryEndContactHandler
+        self.nodeEndContactHandler = nodeEndContactHandler
+        
         super.init()
         
         
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(ContactHandlerComponent.didMakeContact(notification:)), name: Notification.Name.DidMakeContactNotification, object: nil)
+        
+        nc.addObserver(self, selector: #selector(ContactHandlerComponent.didEndContact(notification:)), name: Notification.Name.DidEndContactNotification, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -82,5 +91,50 @@ class ContactHandlerComponent: GKComponent{
         }
     }
     
+    func didEndContact(notification: Notification){
+        
+        guard let contactInfoDict = notification.userInfo else {
+            print("Error: contact user info dict not provided in notification or not available")
+            return
+        }
+        
+        guard let physicsBody = entity?.component(ofType: PhysicsComponent.self)?.physicsBody else {
+            print("Error: the entity must have a physics body in order for a contact handler to act as a component")
+            return
+        }
+        
+        
+        
+        let (bodyAName,bodyACategoryBitmask) = (contactInfoDict[ContactInfoKeys.PhysicsBodyANodeNameKey] as! String, contactInfoDict[ContactInfoKeys.PhysicsBodyACategoryBitmaskKey] as! UInt32)
+        
+        let (bodyBName,bodyBCategoryBitmask) =
+            (contactInfoDict[ContactInfoKeys.PhysicsBodyBNodeNameKey] as! String, contactInfoDict[ContactInfoKeys.PhysicsBodyBCategoryBitmaskKey] as! UInt32)
+        
+        
+        var otherBodyCategoryBitmask: UInt32
+        var otherBodyNodeName: String
+        
+        if(physicsBody.categoryBitMask & bodyACategoryBitmask > 0){
+            otherBodyCategoryBitmask = bodyBCategoryBitmask
+            otherBodyNodeName = bodyBName
+        } else {
+            otherBodyCategoryBitmask = bodyACategoryBitmask
+            otherBodyNodeName = bodyAName
+        }
+        
+        if let categoryEndContactHandler = self.categoryEndContactHandler{
+            categoryEndContactHandler(otherBodyCategoryBitmask)
+        }
+        
+        
+        
+        if let nodeEndContactHandler = self.nodeEndContactHandler{
+            nodeEndContactHandler(otherBodyNodeName)
+        }
+        
+    }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

@@ -40,6 +40,28 @@ class Letter: GKEntity{
         let physicsComponent = PhysicsComponent(physicsBody: physicsBody, collisionConfiguration: CollisionConfiguration.Letter)
         addComponent(physicsComponent)
         
+        
+        let contactHandlerComponent = ContactHandlerComponent(categoryContactHandler: {
+        
+            otherCategoryBitmask in
+            
+            let spriteNode = renderComponent.node
+            
+            switch(otherCategoryBitmask){
+                case CollisionConfiguration.Barrier.categoryMask:
+                    print("Letter \(letterCategory.stringLetter) hit the barrier")
+                    spriteNode.removeFromParent()
+                    break
+                case CollisionConfiguration.Player.categoryMask:
+                    print("Letter \(letterCategory.stringLetter) hit the player")
+                    spriteNode.removeFromParent()
+                    break
+                default:
+                    print("No contact logic implemented")
+            }
+        }, nodeContactHandler: nil, categoryEndContactHandler: nil, nodeEndContactHandler: nil)
+        
+        addComponent(contactHandlerComponent)
 
     }
     

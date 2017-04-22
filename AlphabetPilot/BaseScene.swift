@@ -102,6 +102,7 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         
         worldNode = SKNode()
         addChild(worldNode)
+    
         
         
         backgroundNode = SKNode()
@@ -139,8 +140,30 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         let touch = touches.first! as UITouch
         let touchLocation = touch.location(in: self)
         
-     
+        let nodesTouched = nodes(at: touchLocation)
+            
+        for node in nodesTouched{
+            if node.name == "PlayerNode"{
+                print("Touched the player")
+                
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name.DidTouchPlayerNodeNotification, object: nil, userInfo: nil)
+            }
+        }
         
+        if worldNode.contains(touchLocation){
+            print("WorldNode was touched")
+            if let playerNode = player.component(ofType: RenderComponent.self)?.node, playerNode.contains(touchLocation){
+            
+                print("Touched the player")
+            
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name.DidTouchPlayerNodeNotification, object: nil, userInfo: nil)
+            
+            }
+        
+     
+        }
 
     }
     
@@ -162,7 +185,7 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
             
             //Consider how to dispatch this code to an synchronous queue
             
-        
+            
             customQueue.addOperation {
                 
                if(self.allLettersSpawned) { return }
@@ -194,8 +217,9 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
                 allLettersSpawned = true
             }
             letterSpawnFrameCount = 0
+            
         }
-        
+ 
         entityManager.update(dt)
 
         self.lastUpdateTime = currentTime

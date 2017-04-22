@@ -10,11 +10,6 @@ import Foundation
 
 
 
-extension Notification.Name{
-    
-    static let DidMakeContactNotification = Notification.Name(rawValue: "didMakeContactNotification")
-}
-
 
 class ContactInfoKeys{
     static let PhysicsBodyACategoryBitmaskKey: String = "categoryBitmaskA"
