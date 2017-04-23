@@ -23,10 +23,10 @@ class GameViewController: UIViewController {
         
         let skView = self.view as! SKView
             
-        let gameScene = GameScene(size: view.bounds.size)
         let baseScene = BaseScene(size: view.bounds.size)
+        let platformerBaseScene = PlatformerBaseScene(size: view.bounds.size)
         
-        skView.presentScene(baseScene)
+        skView.presentScene(platformerBaseScene)
         
         
     }

@@ -1,43 +1,48 @@
 //
-//  EntityManager.swift
+//  PlatformerEntityManager.swift
 //  AlphabetPilot
 //
-//  Created by Aleksander Makedonski on 4/22/17.
+//  Created by Aleksander Makedonski on 4/23/17.
 //  Copyright © 2017 AlexMakedonski. All rights reserved.
 //
 
 import Foundation
-
 import GameplayKit
 import SpriteKit
 
-class EntityManager{
+
+class PlatformerEntityManager{
+    
     var entities = Set<GKEntity>()
     var toRemove = Set<GKEntity>()
     
-    let scene: BaseScene
     
     lazy var componentSystems: [GKComponentSystem] = {
         
+        
         let renderComponent = GKComponentSystem(componentClass: RenderComponent.self)
         
-        let portraitMotionResponderComponentX = GKComponentSystem(componentClass: PortraitMotionResponderComponentX.self)
+        let nodeNameComponent = GKComponentSystem(componentClass: NodeNameComponent.self)
         
-        let agentComponent = GKComponentSystem(componentClass: GKAgent2D.self)
+        let physicsComponent = GKComponentSystem(componentClass: PhysicsComponent.self)
+        
+        let motionResponderComponentX = GKComponentSystem(componentClass: LandscapeMotionResponderComponentX.self)
         
         let orientationComponent = GKComponentSystem(componentClass: OrientationComponent.self)
         
         let animationComponent = GKComponentSystem(componentClass: AnimationComponent.self)
         
+        
         let jumpComponent = GKComponentSystem(componentClass: JumpComponent.self)
         
-        let oscillatorComponent = GKComponentSystem(componentClass: OscillatorComponent.self)
         
-        return [renderComponent, portraitMotionResponderComponentX,orientationComponent, animationComponent, agentComponent, jumpComponent]
+        return [renderComponent, nodeNameComponent, physicsComponent, motionResponderComponentX, orientationComponent, animationComponent, jumpComponent]
+    
     }()
     
+    let scene: PlatformerBaseScene
     
-    init(scene: BaseScene){
+    init(scene: PlatformerBaseScene){
         self.scene = scene
     }
     
@@ -88,10 +93,5 @@ class EntityManager{
         }
     }
     
-   
     
-   
 }
-
-
-

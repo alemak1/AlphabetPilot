@@ -55,7 +55,7 @@ class Player: GKEntity{
         addComponent(physicsComponent)
         
         
-        let motionResponderComponent = PortraitMotionResponderComponentX(motionManager: mainMotionManager)
+        let motionResponderComponent = LandscapeMotionResponderComponentX(motionManager: mainMotionManager)
         addComponent(motionResponderComponent)
         
         let orientationComponent = OrientationComponent(currentOrientation: .Right)
@@ -69,32 +69,7 @@ class Player: GKEntity{
         let jumpComponent = JumpComponent()
         addComponent(jumpComponent)
         
-        let contactHandlerComponent = ContactHandlerComponent(categoryContactHandler: {
-        otherBodyCategoryMask in
-            switch(otherBodyCategoryMask){
-            case CollisionConfiguration.Barrier.categoryMask:
-                print("Player is touching barrier")
-                jumpComponent.canJump = true
-                break
-            case CollisionConfiguration.Letter.categoryMask:
-                break
-            default:
-                print("No contact logic implemented")
-            }
-        }, nodeContactHandler: nil, categoryEndContactHandler: {
-        
-                otherBodyCategoryMask in
-            
-            switch(otherBodyCategoryMask){
-            case CollisionConfiguration.Barrier.categoryMask:
-                print("Player is no longer touching the barrier")
-                jumpComponent.canJump = false
-                break
-            default:
-                print("No contact logic implemented")
-            }
-        
-        }, nodeEndContactHandler: nil)
+     
         
         //The player is scaled down after the physics body is added so that the physics body scaled down along with the node texture
         
@@ -128,3 +103,35 @@ extension Player{
                   .Right: Player.moveRightAnimation]
     ]
 }
+
+
+/**  TODO: To add a contact handler component to the player, include the following code snippet:
+ 
+ let contactHandlerComponent = ContactHandlerComponent(categoryContactHandler: {
+ otherBodyCategoryMask in
+ switch(otherBodyCategoryMask){
+ case CollisionConfiguration.Barrier.categoryMask:
+ print("Player is touching barrier")
+ jumpComponent.canJump = true
+ break
+ case CollisionConfiguration.Letter.categoryMask:
+ break
+ default:
+ print("No contact logic implemented")
+ }
+ }, nodeContactHandler: nil, categoryEndContactHandler: {
+ 
+ otherBodyCategoryMask in
+ 
+ switch(otherBodyCategoryMask){
+ case CollisionConfiguration.Barrier.categoryMask:
+ print("Player is no longer touching the barrier")
+ jumpComponent.canJump = false
+ break
+ default:
+ print("No contact logic implemented")
+ }
+ 
+ }, nodeEndContactHandler: nil)
+ **/
+
