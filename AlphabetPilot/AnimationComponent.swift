@@ -226,26 +226,22 @@ class AnimationComponent: GKComponent{
     override func update(deltaTime seconds: TimeInterval) {
         super.update(deltaTime: seconds)
         
-        print("Getting orientation component for animation component...")
         guard let orientationComponent = entity?.component(ofType: OrientationComponent.self) else {
             fatalError("An animation component's entity must have an orientation component")
         }
         
         //If the orientation of the character has changed for a given animation state, request a new animation
         
-        print("Checking new animation for orientation change...")
 
         
         if let currentAnimation = currentAnimation, let previousAnimation = previousAnimation, currentAnimation.animationState == previousAnimation.animationState, orientationComponent.currentOrientation != currentAnimation.orientation{
            
-            print("Getting new animation for orientation change...")
 
             runAnimationForAnimationState(animationState: currentAnimation.animationState, orientation: orientationComponent.currentOrientation)
         }
         
         //If an animation state has been requested, run the animation
         
-        print("Checking if new animation has been requested...")
 
         if let animationState = requestedAnimation{
             

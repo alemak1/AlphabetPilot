@@ -51,7 +51,7 @@ class Letter: GKEntity{
             
             switch(otherCategoryBitmask){
                 case CollisionConfiguration.Barrier.categoryMask:
-                    print("Letter \(letterCategory.stringLetter) hit the barrier")
+                    //print("Letter \(letterCategory.stringLetter) hit the barrier")
                     
                     /**
                     spriteNode.run(SKAction.fadeAlpha(to: 0.00, duration: 2.0), completion: {
@@ -69,6 +69,9 @@ class Letter: GKEntity{
                 case CollisionConfiguration.Player.categoryMask:
                     print("Letter \(letterCategory.stringLetter) hit the player")
                     
+                    let nc = NotificationCenter.default
+                    let userInfo = ["letter": letterCategory.letter]
+                    nc.post(name: Notification.Name.PlayerDidContactLetterNotification, object: nil, userInfo: userInfo)
                     break
                 default:
                     print("No contact logic implemented")

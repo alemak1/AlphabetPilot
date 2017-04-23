@@ -157,11 +157,13 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         islandNode.physicsBody?.contactTestBitMask = CollisionConfiguration.Barrier.contactMask
         worldNode.addChild(islandNode)
         
+        
         entityManager = EntityManager(scene: self)
 
         player = Player()
         entityManager.add(player)
         
+        /**
         let xPos = RandomGenerator.getRandomXPos(adjustmentFactor: 0.90)
         let yPos = 200
         
@@ -185,8 +187,10 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
       
         entityManager.add(newIsland2)
 
-        
+        **/
      
+        let inProgressWord = InProgressWord(targetWord: "Forever")
+        entityManager.add(inProgressWord)
         
     }
     
@@ -250,40 +254,7 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
                 newLetterNode.position = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.90), y:  Int(ScreenSizeConstants.HalfScreenHeight)+100)
             }
             
-            //Consider how to dispatch this code to an synchronous queue
-            
-            /**
-            customQueue.addOperation {
-                
-               if(self.allLettersSpawned) { return }
-                
-                var isNewLetter: Bool
-                
-                repeat{
-                    
-                    isNewLetter = true
-                    
-                    let newRandomLetterIndex = self.randomLetterIndex
-                    var randomLetterTuple = self.letterEntityArray[newRandomLetterIndex]
-                    
-                    if(!randomLetterTuple.1){
-                        DispatchQueue.main.sync {
-                            let randomLetter = randomLetterTuple.0
-                            self.entityManager.add(randomLetter)
-                            self.setLetterStatusToFalse(letterTuple: &self.letterEntityArray[newRandomLetterIndex])
-                        }
-                       
-                    } else {
-                        isNewLetter = false
-                    }
-                }while(!isNewLetter)
-            
-            }
-        
-            if(allLetterSpawned()){
-                allLettersSpawned = true
-            }
-           **/
+           
             
             letterSpawnFrameCount = 0
 
@@ -300,6 +271,45 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
 }
 
 extension BaseScene{
+    
+    
+    func spawnLetterFromPreloadedArrayUsingOperationQueue(){
+        //Consider how to dispatch this code to an synchronous queue
+        
+        /**
+         customQueue.addOperation {
+         
+         if(self.allLettersSpawned) { return }
+         
+         var isNewLetter: Bool
+         
+         repeat{
+         
+         isNewLetter = true
+         
+         let newRandomLetterIndex = self.randomLetterIndex
+         var randomLetterTuple = self.letterEntityArray[newRandomLetterIndex]
+         
+         if(!randomLetterTuple.1){
+         DispatchQueue.main.sync {
+         let randomLetter = randomLetterTuple.0
+         self.entityManager.add(randomLetter)
+         self.setLetterStatusToFalse(letterTuple: &self.letterEntityArray[newRandomLetterIndex])
+         }
+         
+         } else {
+         isNewLetter = false
+         }
+         }while(!isNewLetter)
+         
+         }
+         
+         if(allLetterSpawned()){
+         allLettersSpawned = true
+         }
+         **/
+        
+    }
     
     
     //Function should be dispatched asynchronously to a concurrent queue to prevent blocing of the main thread since the function will take longer as the number of letter available for spawning decreases

@@ -76,6 +76,8 @@ class Player: GKEntity{
                 print("Player is touching barrier")
                 jumpComponent.canJump = true
                 break
+            case CollisionConfiguration.Letter.categoryMask:
+                break
             default:
                 print("No contact logic implemented")
             }
