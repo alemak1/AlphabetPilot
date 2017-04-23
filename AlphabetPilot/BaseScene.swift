@@ -95,7 +95,7 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
     
     var allLettersSpawned: Bool = false
     
-    private func allLetterSpawned() -> Bool{
+    func allLetterSpawned() -> Bool{
         return letterEntityArray.map({ return $0.1 }).reduce(true){ return $0 && $1 }
     }
     
@@ -247,14 +247,7 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         if(letterSpawnFrameCount > letterSpawnInterval){
             
             
-           let newLetter = letterEntityArrayOriginal[randomLetterIndexFromOriginalArray].replicate()
-            
-            entityManager.add(newLetter)
-            if let newLetterNode = newLetter.component(ofType: RenderComponent.self)?.node{
-                newLetterNode.position = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.90), y:  Int(ScreenSizeConstants.HalfScreenHeight)+100)
-            }
-            
-           
+            spawnLetterFromPreloadedArrayUsingOperationQueue()
             
             letterSpawnFrameCount = 0
 
@@ -273,10 +266,22 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
 extension BaseScene{
     
     
+    func spawnLetterCopyFromPreloadedArray(){
+        
+        let newLetter = letterEntityArrayOriginal[randomLetterIndexFromOriginalArray].replicate()
+        
+        entityManager.add(newLetter)
+        if let newLetterNode = newLetter.component(ofType: RenderComponent.self)?.node{
+            newLetterNode.position = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.90), y:  Int(ScreenSizeConstants.HalfScreenHeight)+100)
+        }
+        
+        
+    }
+    
     func spawnLetterFromPreloadedArrayUsingOperationQueue(){
         //Consider how to dispatch this code to an synchronous queue
         
-        /**
+        
          customQueue.addOperation {
          
          if(self.allLettersSpawned) { return }
@@ -307,7 +312,7 @@ extension BaseScene{
          if(allLetterSpawned()){
          allLettersSpawned = true
          }
-         **/
+ 
         
     }
     
