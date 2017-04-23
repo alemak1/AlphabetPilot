@@ -17,6 +17,42 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
     var entityManager: EntityManager!
     
     
+    var letterEntityArrayOriginal: [Letter] = [
+        Letter(letterCategory: .letterA),
+        Letter(letterCategory: .letterB),
+        Letter(letterCategory: .letterC),
+        Letter(letterCategory: .letterD),
+        Letter(letterCategory: .letterE),
+        Letter(letterCategory: .letterF),
+        Letter(letterCategory: .letterG),
+        Letter(letterCategory: .letterH),
+        Letter(letterCategory: .letterI),
+        Letter(letterCategory: .letterJ),
+        Letter(letterCategory: .letterK),
+        Letter(letterCategory: .letterL),
+        Letter(letterCategory: .letterM),
+        Letter(letterCategory: .letterN),
+        Letter(letterCategory: .letterO),
+        Letter(letterCategory: .letterP),
+        Letter(letterCategory: .letterQ),
+        Letter(letterCategory: .letterR),
+        Letter(letterCategory: .letterS),
+        Letter(letterCategory: .letterT),
+        Letter(letterCategory: .letterU),
+        Letter(letterCategory: .letterV),
+        Letter(letterCategory: .letterW),
+        Letter(letterCategory: .letterX),
+        Letter(letterCategory: .letterY),
+        Letter(letterCategory: .letterZ)
+
+    ]
+    
+    var randomLetterIndexFromOriginalArray: Int{
+        let randomSrc = GKMersenneTwisterRandomSource()
+        let randomDst = GKRandomDistribution(randomSource: randomSrc, lowestValue: 0, highestValue: letterEntityArrayOriginal.count-1)
+        return randomDst.nextInt()
+    }
+    
     //MARK: LetterArray and Related Spawning Variables; each letter entity in the letter array has an associated boolean flag that is set to true if the letter has already been spawned; letters that have already been spawned will be repositioned above the screen in the implementation of the contact logic
     
     typealias LetterTuple = (Letter,Bool)
@@ -126,7 +162,31 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         player = Player()
         entityManager.add(player)
         
-    
+        let xPos = RandomGenerator.getRandomXPos(adjustmentFactor: 0.90)
+        let yPos = 200
+        
+        let newIsland = Island(islandType: .ground_cake, position: CGPoint(x: xPos,y:yPos))
+        if let animationComponent = newIsland.component(ofType: AnimationComponent.self){
+            animationComponent.requestedAnimation = .moving
+        }
+        
+        entityManager.add(newIsland)
+
+        
+        let xPos2 = RandomGenerator.getRandomXPos(adjustmentFactor: 0.90)
+        let yPos2 = -100
+        
+
+        let newIsland2 = Island(islandType: .ground_grass, position: CGPoint(x: xPos2,y: yPos2))
+        
+        if let animationComponent = newIsland2.component(ofType: AnimationComponent.self){
+            animationComponent.requestedAnimation = .moving
+        }
+      
+        entityManager.add(newIsland2)
+
+        
+     
         
     }
     
@@ -183,9 +243,16 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
         if(letterSpawnFrameCount > letterSpawnInterval){
             
             
+           let newLetter = letterEntityArrayOriginal[randomLetterIndexFromOriginalArray].replicate()
+            
+            entityManager.add(newLetter)
+            if let newLetterNode = newLetter.component(ofType: RenderComponent.self)?.node{
+                newLetterNode.position = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.90), y:  Int(ScreenSizeConstants.HalfScreenHeight)+100)
+            }
+            
             //Consider how to dispatch this code to an synchronous queue
             
-            
+            /**
             customQueue.addOperation {
                 
                if(self.allLettersSpawned) { return }
@@ -216,10 +283,13 @@ class BaseScene: SKScene, SKPhysicsContactDelegate{
             if(allLetterSpawned()){
                 allLettersSpawned = true
             }
-            letterSpawnFrameCount = 0
+           **/
             
+            letterSpawnFrameCount = 0
+
         }
  
+            
         entityManager.update(dt)
 
         self.lastUpdateTime = currentTime

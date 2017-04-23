@@ -15,6 +15,8 @@
 		BD23ACA21EAB21B20099010D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23ACA11EAB21B20099010D /* Constants.swift */; };
 		BD23ACA41EAB27D20099010D /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23ACA31EAB27D20099010D /* OrientationComponent.swift */; };
 		BD23ACA61EAB28D30099010D /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23ACA51EAB28D30099010D /* AnimationComponent.swift */; };
+		BD2BEF421EAC4169005A9BE1 /* Island.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BEF411EAC4169005A9BE1 /* Island.swift */; };
+		BD2BEF441EAC56A4005A9BE1 /* OscillatorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BEF431EAC56A4005A9BE1 /* OscillatorComponent.swift */; };
 		BD2BF4411EAAF27400CF3595 /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4401EAAF27400CF3595 /* RenderComponent.swift */; };
 		BD2BF4431EAAF2FC00CF3595 /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4421EAAF2FC00CF3595 /* PhysicsComponent.swift */; };
 		BD2BF4461EAAF39200CF3595 /* CollisionConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4451EAAF39200CF3595 /* CollisionConfiguration.swift */; };
@@ -40,6 +42,8 @@
 		BD72F5B01EA9FD250036168C /* OverlayScene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD72F5AF1EA9FD250036168C /* OverlayScene1.sks */; };
 		BD72F5B21EAA06590036168C /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72F5B11EAA06590036168C /* BaseScene.swift */; };
 		BD72F5B61EAA0D340036168C /* BaseScene+Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72F5B51EAA0D340036168C /* BaseScene+Pause.swift */; };
+		BD8DD9241EAC67E700F9FFDC /* SKNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8DD9231EAC67E700F9FFDC /* SKNodeExtension.swift */; };
+		BD8DD9261EAC6E6200F9FFDC /* InProgressWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +55,8 @@
 		BD23ACA11EAB21B20099010D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BD23ACA31EAB27D20099010D /* OrientationComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationComponent.swift; sourceTree = "<group>"; };
 		BD23ACA51EAB28D30099010D /* AnimationComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
+		BD2BEF411EAC4169005A9BE1 /* Island.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Island.swift; sourceTree = "<group>"; };
+		BD2BEF431EAC56A4005A9BE1 /* OscillatorComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OscillatorComponent.swift; sourceTree = "<group>"; };
 		BD2BF4401EAAF27400CF3595 /* RenderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
 		BD2BF4421EAAF2FC00CF3595 /* PhysicsComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		BD2BF4451EAAF39200CF3595 /* CollisionConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionConfiguration.swift; sourceTree = "<group>"; };
@@ -78,6 +84,8 @@
 		BD72F5AF1EA9FD250036168C /* OverlayScene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = OverlayScene1.sks; sourceTree = "<group>"; };
 		BD72F5B11EAA06590036168C /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		BD72F5B51EAA0D340036168C /* BaseScene+Pause.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseScene+Pause.swift"; sourceTree = "<group>"; };
+		BD8DD9231EAC67E700F9FFDC /* SKNodeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKNodeExtension.swift; sourceTree = "<group>"; };
+		BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressWord.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,7 @@
 				BD23AC9F1EAB21720099010D /* RandomGenerator.swift */,
 				BD23ACA11EAB21B20099010D /* Constants.swift */,
 				BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */,
+				BD8DD9231EAC67E700F9FFDC /* SKNodeExtension.swift */,
 			);
 			name = Gameutil;
 			sourceTree = "<group>";
@@ -167,6 +176,7 @@
 				BD23ACA31EAB27D20099010D /* OrientationComponent.swift */,
 				BD23ACA51EAB28D30099010D /* AnimationComponent.swift */,
 				BD3149A31EAB827400DB34EE /* JumpComponent.swift */,
+				BD2BEF431EAC56A4005A9BE1 /* OscillatorComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -176,6 +186,8 @@
 			children = (
 				BD2BF4471EAAF59F00CF3595 /* Player.swift */,
 				BD2BF44B1EAAF65D00CF3595 /* Letter.swift */,
+				BD2BEF411EAC4169005A9BE1 /* Island.swift */,
+				BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -259,6 +271,7 @@
 				BD3149A61EAB847000DB34EE /* NotificationNameExtension.swift in Sources */,
 				BD72F59C1EA9FC810036168C /* GameScene.swift in Sources */,
 				BD23ACA21EAB21B20099010D /* Constants.swift in Sources */,
+				BD8DD9241EAC67E700F9FFDC /* SKNodeExtension.swift in Sources */,
 				BD72F5AE1EA9FC930036168C /* PauseOverlayNode.swift in Sources */,
 				BD23AC9A1EAB1C150099010D /* EntityManager.swift in Sources */,
 				BD23ACA41EAB27D20099010D /* OrientationComponent.swift in Sources */,
@@ -266,6 +279,8 @@
 				BD3149A21EAB5D9A00DB34EE /* LetterNode.swift in Sources */,
 				BD23ACA61EAB28D30099010D /* AnimationComponent.swift in Sources */,
 				BD2BF44C1EAAF65D00CF3595 /* Letter.swift in Sources */,
+				BD2BEF421EAC4169005A9BE1 /* Island.swift in Sources */,
+				BD8DD9261EAC6E6200F9FFDC /* InProgressWord.swift in Sources */,
 				BD72F5B61EAA0D340036168C /* BaseScene+Pause.swift in Sources */,
 				BD72F59E1EA9FC810036168C /* GameViewController.swift in Sources */,
 				BD2BF4481EAAF59F00CF3595 /* Player.swift in Sources */,
@@ -278,6 +293,7 @@
 				BD23ACA01EAB21720099010D /* RandomGenerator.swift in Sources */,
 				BD3149A41EAB827400DB34EE /* JumpComponent.swift in Sources */,
 				BD23AC981EAB18A50099010D /* PortraitMotionResponderComponent.swift in Sources */,
+				BD2BEF441EAC56A4005A9BE1 /* OscillatorComponent.swift in Sources */,
 				BD2BF4541EAB017500CF3595 /* NodeNameComponent.swift in Sources */,
 				BD2BF4431EAAF2FC00CF3595 /* PhysicsComponent.swift in Sources */,
 				BD2BF4501EAAFE3B00CF3595 /* PhysicsContactUtility.swift in Sources */,

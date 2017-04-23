@@ -36,7 +36,7 @@ class Player: GKEntity{
         /** Add the render component with the appropriate SKTexture derived from the Bunny base image
         **/
         let texture = SKTexture(image: #imageLiteral(resourceName: "bunny2_walk1"))
-        let renderComponent = RenderComponent()
+        let renderComponent = RenderComponent(position: .zero, autoRemoveEnabled: false)
         renderComponent.node = SKSpriteNode(texture: texture, color: .clear, size: texture.size())
         addComponent(renderComponent)
         

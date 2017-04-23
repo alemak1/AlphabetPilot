@@ -120,7 +120,7 @@ class AnimationComponent: GKComponent{
     private(set) var currentAnimation: Animation?
     private(set) var previousAnimation: Animation?
     
-    var requestedAnimation: AnimationState?
+    var requestedAnimation: AnimationState? = nil
     
     
     init(animations: [AnimationState:[Orientation: Animation]]){
@@ -137,6 +137,7 @@ class AnimationComponent: GKComponent{
         }
         
         self.node = node
+        requestedAnimation = nil
     }
     
     override func willRemoveFromEntity() {
@@ -149,9 +150,10 @@ class AnimationComponent: GKComponent{
     
     private func runAnimationForAnimationState(animationState: AnimationState, orientation: Orientation){
         
-        guard let node = node else {
-            print("The entity must have a render component in order for runAnimationForAnimationState to run properly")
-            return }
+       
+        
+        guard let node = node else { return }
+        
         
         //Check if we are already running this animation; if so, then exit the function
         if currentAnimation != nil && currentAnimation!.animationState == animationState && currentAnimation!.orientation == orientation { return }
@@ -199,9 +201,15 @@ class AnimationComponent: GKComponent{
                 node.position = .zero
                     
                 let nonTextureAction = animation.nonTextureAction
-                    
-                node.run(nonTextureAction, withKey: AnimationComponent.nonTextureActionKey)
-                    
+                
+                if animation.repeatNonTextureActionForever{
+                    node.run(SKAction.repeatForever(nonTextureAction))
+                } else {
+                    node.run(nonTextureAction, withKey: AnimationComponent.nonTextureActionKey)
+
+                }
+                
+                
                 
                 break
         default:

@@ -21,11 +21,13 @@ class Letter: GKEntity{
     convenience init(letterCategory: LetterNode.LetterCategory, letterMass: CGFloat = 1.00) {
         self.init()
 
-        let renderComponent = RenderComponent()
+       
         
         let startXPos = RandomGenerator.getRandomXPos(adjustmentFactor: 0.95)
         let startYPos = Int(ScreenSizeConstants.HalfScreenHeight) + 100
         let startPos = CGPoint(x: startXPos, y: startYPos)
+        
+         let renderComponent = RenderComponent(position: startPos, autoRepositioningEnabled: true)
         
         let letterNode = LetterNode(letter: letterCategory, position: startPos, scalingFactor: 0.60)
         
@@ -41,25 +43,37 @@ class Letter: GKEntity{
         addComponent(physicsComponent)
         
         
-        let contactHandlerComponent = ContactHandlerComponent(categoryContactHandler: {
+        let contactHandlerComponent = ContactHandlerComponent(categoryContactHandler:  {
         
             otherCategoryBitmask in
             
-            let spriteNode = renderComponent.node
+            let renderComponent = self.component(ofType: RenderComponent.self)
             
             switch(otherCategoryBitmask){
                 case CollisionConfiguration.Barrier.categoryMask:
                     print("Letter \(letterCategory.stringLetter) hit the barrier")
-                    spriteNode.removeFromParent()
+                    
+                    /**
+                    spriteNode.run(SKAction.fadeAlpha(to: 0.00, duration: 2.0), completion: {
+                        spriteNode.physicsBody?.affectedByGravity = false
+                        spriteNode.position = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.90), y: Int(ScreenSizeConstants.ScreenHeight+100))
+                        
+
+                    })
+                    
+                    spriteNode.run(SKAction.wait(forDuration: 10), completion: {
+                        spriteNode.physicsBody?.affectedByGravity = true
+                    })
+                    **/
                     break
                 case CollisionConfiguration.Player.categoryMask:
                     print("Letter \(letterCategory.stringLetter) hit the player")
-                    spriteNode.removeFromParent()
+                    
                     break
                 default:
                     print("No contact logic implemented")
             }
-        }, nodeContactHandler: nil, categoryEndContactHandler: nil, nodeEndContactHandler: nil)
+        } , nodeContactHandler: nil, categoryEndContactHandler: nil, nodeEndContactHandler: nil)
         
         addComponent(contactHandlerComponent)
 
@@ -77,3 +91,18 @@ class Letter: GKEntity{
     //MARK: Helper Method: Post a notificaiton
 }
 
+
+//TODO:     Consider overloading the = operator as well as other the copy() method to further    customize the manner in which letters are copied
+
+extension Letter{
+    
+    func replicate() -> Letter{
+        let duplicateLetter = Letter()
+        
+        for component in self.components{
+            duplicateLetter.addComponent(component)
+        }
+        
+        return duplicateLetter
+    }
+}

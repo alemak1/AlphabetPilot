@@ -19,6 +19,8 @@ class EntityManager{
     
     lazy var componentSystems: [GKComponentSystem] = {
         
+        let renderComponent = GKComponentSystem(componentClass: RenderComponent.self)
+        
         let portraitMotionResponderComponentX = GKComponentSystem(componentClass: PortraitMotionResponderComponentX.self)
         
         let agentComponent = GKComponentSystem(componentClass: GKAgent2D.self)
@@ -29,7 +31,9 @@ class EntityManager{
         
         let jumpComponent = GKComponentSystem(componentClass: JumpComponent.self)
         
-        return [portraitMotionResponderComponentX,orientationComponent, animationComponent, agentComponent, jumpComponent]
+        let oscillatorComponent = GKComponentSystem(componentClass: OscillatorComponent.self)
+        
+        return [renderComponent, portraitMotionResponderComponentX,orientationComponent, animationComponent, agentComponent, jumpComponent]
     }()
     
     
