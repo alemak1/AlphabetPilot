@@ -42,7 +42,7 @@ class Island: GKEntity{
             return }
         let renderComponent = RenderComponent(position: position, autoRemoveEnabled: false)
         renderComponent.node = SKSpriteNode(texture: texture, color: .clear, size: texture.size())
-        renderComponent.node.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        renderComponent.node?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         addComponent(renderComponent)
         
         /** Add Physic Component
@@ -61,7 +61,11 @@ class Island: GKEntity{
         addComponent(orientationComponent)
         
         
-        let currentPosition = renderComponent.node.position
+        guard let currentPosition = renderComponent.node?.position else {
+            print("The render node must be available in order for animations to be added")
+            return
+        }
+        
         let movePosition = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.95), y: Int(currentPosition.y))
         
         let action1 =  SKAction.move(to: currentPosition, duration: 3.00)
@@ -92,8 +96,8 @@ class Island: GKEntity{
         
         
         
-        renderComponent.node.xScale *= 0.50
-        renderComponent.node.yScale *= 0.50
+        renderComponent.node?.xScale *= 0.50
+        renderComponent.node?.yScale *= 0.50
     }
     
     required init?(coder aDecoder: NSCoder) {

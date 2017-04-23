@@ -96,8 +96,8 @@ class Player: GKEntity{
         
         //The player is scaled down after the physics body is added so that the physics body scaled down along with the node texture
         
-        renderComponent.node.xScale *= 0.50
-        renderComponent.node.yScale *= 0.50
+        renderComponent.node?.xScale *= 0.50
+        renderComponent.node?.yScale *= 0.50
         
        
         
