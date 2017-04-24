@@ -35,8 +35,9 @@ class PlatformerEntityManager{
         
         let jumpComponent = GKComponentSystem(componentClass: JumpComponent.self)
         
+        let agentComponent = GKComponentSystem(componentClass: AgentComponent.self)
         
-        return [renderComponent, nodeNameComponent, physicsComponent, motionResponderComponentX, orientationComponent, animationComponent, jumpComponent]
+        return [renderComponent, nodeNameComponent, physicsComponent, motionResponderComponentX, orientationComponent, animationComponent, jumpComponent, agentComponent]
     
     }()
     
@@ -62,6 +63,16 @@ class PlatformerEntityManager{
         
         toRemove.removeAll()
     }
+    
+    
+    func addToEntitySet(_ entity: GKEntity){
+        entities.insert(entity)
+        
+        for componentSystem in componentSystems{
+            componentSystem.addComponent(foundIn: entity)
+        }
+    }
+    
     
     func addToWorld(_ entity: GKEntity){
         entities.insert(entity)

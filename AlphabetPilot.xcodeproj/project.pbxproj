@@ -15,6 +15,8 @@
 		BD23ACA21EAB21B20099010D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23ACA11EAB21B20099010D /* Constants.swift */; };
 		BD23ACA41EAB27D20099010D /* OrientationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23ACA31EAB27D20099010D /* OrientationComponent.swift */; };
 		BD23ACA61EAB28D30099010D /* AnimationComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD23ACA51EAB28D30099010D /* AnimationComponent.swift */; };
+		BD2B68301EAE0FFA0095A122 /* EnemySun.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2B682F1EAE0FFA0095A122 /* EnemySun.swift */; };
+		BD2B68321EAE1A8E0095A122 /* AgentComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2B68311EAE1A8E0095A122 /* AgentComponent.swift */; };
 		BD2BEF421EAC4169005A9BE1 /* Island.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BEF411EAC4169005A9BE1 /* Island.swift */; };
 		BD2BEF441EAC56A4005A9BE1 /* OscillatorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BEF431EAC56A4005A9BE1 /* OscillatorComponent.swift */; };
 		BD2BF4411EAAF27400CF3595 /* RenderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4401EAAF27400CF3595 /* RenderComponent.swift */; };
@@ -58,6 +60,8 @@
 		BD23ACA11EAB21B20099010D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BD23ACA31EAB27D20099010D /* OrientationComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrientationComponent.swift; sourceTree = "<group>"; };
 		BD23ACA51EAB28D30099010D /* AnimationComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationComponent.swift; sourceTree = "<group>"; };
+		BD2B682F1EAE0FFA0095A122 /* EnemySun.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemySun.swift; sourceTree = "<group>"; };
+		BD2B68311EAE1A8E0095A122 /* AgentComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgentComponent.swift; sourceTree = "<group>"; };
 		BD2BEF411EAC4169005A9BE1 /* Island.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Island.swift; sourceTree = "<group>"; };
 		BD2BEF431EAC56A4005A9BE1 /* OscillatorComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OscillatorComponent.swift; sourceTree = "<group>"; };
 		BD2BF4401EAAF27400CF3595 /* RenderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderComponent.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				BD2BEF431EAC56A4005A9BE1 /* OscillatorComponent.swift */,
 				BD9ACA8E1EACCD100099B04A /* LandscapeMotionResponderComponent.swift */,
 				BD2DD9F31EADB83B00DBBB4C /* GroundComponent.swift */,
+				BD2B68311EAE1A8E0095A122 /* AgentComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				BD2BEF411EAC4169005A9BE1 /* Island.swift */,
 				BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */,
 				BD2DD9F11EADB74E00DBBB4C /* Background.swift */,
+				BD2B682F1EAE0FFA0095A122 /* EnemySun.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -313,10 +319,12 @@
 				BD2BF4481EAAF59F00CF3595 /* Player.swift in Sources */,
 				BD2BF44E1EAAF90D00CF3595 /* ContactHandlerComponent.swift in Sources */,
 				BD2BF4411EAAF27400CF3595 /* RenderComponent.swift in Sources */,
+				BD2B68321EAE1A8E0095A122 /* AgentComponent.swift in Sources */,
 				BD2BF4461EAAF39200CF3595 /* CollisionConfiguration.swift in Sources */,
 				BD72F5961EA9FC810036168C /* AppDelegate.swift in Sources */,
 				BD23AC9E1EAB1F6F0099010D /* CoreMotionHelper.swift in Sources */,
 				BD9ACA8F1EACCD100099B04A /* LandscapeMotionResponderComponent.swift in Sources */,
+				BD2B68301EAE0FFA0095A122 /* EnemySun.swift in Sources */,
 				BD72F5B21EAA06590036168C /* BaseScene.swift in Sources */,
 				BD23ACA01EAB21720099010D /* RandomGenerator.swift in Sources */,
 				BD3149A41EAB827400DB34EE /* JumpComponent.swift in Sources */,

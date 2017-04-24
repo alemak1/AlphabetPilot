@@ -69,7 +69,10 @@ class Player: GKEntity{
         let jumpComponent = JumpComponent()
         addComponent(jumpComponent)
         
-     
+        
+        let defaultAgent = GKAgent2D()
+        let agentComponent = AgentComponent(defaultAgent: defaultAgent)
+        addComponent(agentComponent)
         
         //The player is scaled down after the physics body is added so that the physics body scaled down along with the node texture
         

@@ -32,6 +32,8 @@ class RenderComponent: GKComponent{
     }
     
     
+    
+    
     convenience init(position: CGPoint, autoRemoveEnabled: Bool = false) {
         self.init()
         self.position = position

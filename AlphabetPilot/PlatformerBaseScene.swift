@@ -89,19 +89,53 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
  
         **/
         
-        let islandSceneRootNode = SKScene(fileNamed: "IslandScene")?.childNode(withName: "RootNode")
-        islandSceneRootNode!.move(toParent: worldNode)
-        
-     
         
         entityManager = PlatformerEntityManager(scene: self)
         
         //let background = Background()
-       // entityManager.addToScene(background)
-       // background.completeSceneDependentInitialization()
+        // entityManager.addToScene(background)
+        // background.completeSceneDependentInitialization()
         
         player = Player()
         entityManager.addToWorld(player)
+        
+        
+        var newEntities = [GKEntity]()
+        
+        let islandSceneRootNode = SKScene(fileNamed: "IslandScene")?.childNode(withName: "RootNode")
+        
+        
+        saveSpriteInformation(rootNode: islandSceneRootNode!)
+        
+        islandSceneRootNode!.move(toParent: worldNode)
+        
+        
+        for node in islandSceneRootNode!.children{
+            if var node = node as? SKNode{
+                if node.name == "EnemySun"{
+                    
+                    let positionVal = node.userData?.value(forKey: "position") as! NSValue
+                    let position = positionVal.cgPointValue
+                    
+                    let texture = SKTexture(image: #imageLiteral(resourceName: "sun1"))
+                    node = SKSpriteNode(texture: texture)
+                    node.move(toParent: worldNode)
+                    
+                    node.position = position
+                    
+                    guard let playerAgent = player.component(ofType: AgentComponent.self)?.entityAgent else { return }
+                    
+                    let enemySun = EnemySun(spriteNode: node as! SKSpriteNode, targetAgent: playerAgent)
+                    
+                    newEntities.append(enemySun)
+                }
+            }
+        }
+     
+       
+        for entity in newEntities{
+            entityManager.addToEntitySet(entity)
+        }
         
     }
     
@@ -175,6 +209,18 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
         world.position = CGPoint(x: world.position.x - nodePositionInScene.x, y: world.position.y - nodePositionInScene.y)
 
         
+    }
+    
+    func saveSpriteInformation(rootNode: SKNode){
+        
+        for node in rootNode.children{
+            
+            node.userData = NSMutableDictionary()
+            let positionValue = NSValue(cgPoint: node.position)
+            node.userData?.setValue(positionValue, forKey: "position")
+            
+            saveSpriteInformation(rootNode: node)
+        }
     }
     
     /**
