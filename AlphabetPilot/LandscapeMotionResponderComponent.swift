@@ -57,11 +57,14 @@ class LandscapeMotionResponderComponent: GKComponent{
             let horizontalAttitude = -motionData.attitude.roll
             let horizontalRotationRate = -motionData.rotationRate.y
             
+            /**
             if((horizontalAttitude > 0.00 && horizontalRotationRate > 0.00) || (horizontalAttitude < 0.00 && horizontalRotationRate < 0.00)){
                 appliedForceDeltaY = CGFloat(horizontalRotationRate)*150.00
             }
-            
-            
+            **/
+            print(horizontalAttitude)
+            appliedForceDeltaY = CGFloat(horizontalAttitude*500)
+            print("The appliedForceDeltaY is \(appliedForceDeltaY)")
         }
     }
     
@@ -72,10 +75,15 @@ class LandscapeMotionResponderComponent: GKComponent{
             let verticalAttitude = -motionData.attitude.pitch
             let verticalRotationRate = -motionData.rotationRate.x
             
+            /**
             if((verticalAttitude < 0.00 && verticalRotationRate < 0.00) || (verticalAttitude > 0.00 && verticalRotationRate > 0.00)){
                 appliedForceDeltaX = CGFloat(verticalRotationRate)*150.00
             }
+            **/
             
+            print(verticalAttitude)
+            appliedForceDeltaX = CGFloat(verticalAttitude*500)
+            print("The appliedForceDeltaX is \(appliedForceDeltaX)")
             
         }
     }

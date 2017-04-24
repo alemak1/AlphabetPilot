@@ -16,4 +16,6 @@ extension Notification.Name{
     static let DidTouchPlayerNodeNotification = Notification.Name("didTouchPlayerNodeNotification")
     static let DidTouchScreenNotification = Notification.Name(rawValue: "didTouchScreenNotification")
     static let PlayerDidContactLetterNotification = Notification.Name(rawValue: "playerDidContactLetterNotification")
+    static let PlayerStartedBarrierContactNotification = Notification.Name(rawValue: "playerStartedBarrierContactNotification")
+    static let PlayerStoppedBarrierContactNotification = Notification.Name(rawValue: "playerStoppedBarrierContactNotification")
 }

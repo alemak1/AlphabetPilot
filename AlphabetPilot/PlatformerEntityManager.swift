@@ -52,16 +52,18 @@ class PlatformerEntityManager{
             componentSystem.update(deltaTime: deltaTime)
         }
         
+      
         for currentRemove in toRemove{
             for componentSystem in componentSystems{
                 componentSystem.removeComponent(foundIn: currentRemove)
             }
         }
         
+        
         toRemove.removeAll()
     }
     
-    func add(_ entity: GKEntity){
+    func addToWorld(_ entity: GKEntity){
         entities.insert(entity)
         
         if let spriteNode = entity.component(ofType: RenderComponent.self)?.node{
@@ -72,6 +74,20 @@ class PlatformerEntityManager{
             componentSystem.addComponent(foundIn: entity)
         }
     }
+    
+    
+    func addToScene(_ entity: GKEntity){
+        entities.insert(entity)
+        
+        if let spriteNode = entity.component(ofType: RenderComponent.self)?.node{
+            spriteNode.move(toParent: scene)
+        }
+        
+        for componentSystem in componentSystems{
+            componentSystem.addComponent(foundIn: entity)
+        }
+    }
+    
     
     func remove(_ entity: GKEntity){
         if let spriteNode = entity.component(ofType: RenderComponent.self)?.node{

@@ -13,12 +13,17 @@ import SpriteKit
 
 class JumpComponent: GKComponent{
     
-    var canJump: Bool = false
+    var canJump: Bool = true
     
     override init() {
         super.init()
         
         let nc = NotificationCenter.default
+        
+        nc.addObserver(self, selector: #selector(JumpComponent.toggleJumpingOn), name: Notification.Name.PlayerStartedBarrierContactNotification, object: nil)
+        
+        nc.addObserver(self, selector: #selector(JumpComponent.toggleJumpingOff), name: Notification.Name.PlayerStoppedBarrierContactNotification, object: nil)
+        
         nc.addObserver(self, selector: #selector(JumpComponent.applyJumpImpulse), name: Notification.Name.DidTouchPlayerNodeNotification, object: nil)
         
         
@@ -45,10 +50,18 @@ class JumpComponent: GKComponent{
         
         guard let physicsBody = entity?.component(ofType: PhysicsComponent.self)?.physicsBody else { return }
         
-        let impulseVector = CGVector(dx: 0.00, dy: 200.00)
+        let impulseVector = CGVector(dx: 0.00, dy: 400.00)
         physicsBody.applyImpulse(impulseVector)
         
         
+    }
+    
+    func toggleJumpingOn(){
+        canJump = true
+    }
+    
+    func toggleJumpingOff(){
+        canJump = false 
     }
     
     deinit {

@@ -26,6 +26,8 @@
 		BD2BF44E1EAAF90D00CF3595 /* ContactHandlerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF44D1EAAF90D00CF3595 /* ContactHandlerComponent.swift */; };
 		BD2BF4521EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4511EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift */; };
 		BD2BF4541EAB017500CF3595 /* NodeNameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2BF4531EAB017500CF3595 /* NodeNameComponent.swift */; };
+		BD2DD9F21EADB74E00DBBB4C /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2DD9F11EADB74E00DBBB4C /* Background.swift */; };
+		BD2DD9F41EADB83B00DBBB4C /* GroundComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2DD9F31EADB83B00DBBB4C /* GroundComponent.swift */; };
 		BD2FCF5D1EAC919500FFA9DD /* SKPhysicsContactExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FCF5C1EAC919500FFA9DD /* SKPhysicsContactExtension.swift */; };
 		BD3149A21EAB5D9A00DB34EE /* LetterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */; };
 		BD3149A41EAB827400DB34EE /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A31EAB827400DB34EE /* JumpComponent.swift */; };
@@ -66,6 +68,8 @@
 		BD2BF44D1EAAF90D00CF3595 /* ContactHandlerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactHandlerComponent.swift; sourceTree = "<group>"; };
 		BD2BF4511EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BaseScene+SKPhysicsContactDelegate.swift"; sourceTree = "<group>"; };
 		BD2BF4531EAB017500CF3595 /* NodeNameComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeNameComponent.swift; sourceTree = "<group>"; };
+		BD2DD9F11EADB74E00DBBB4C /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		BD2DD9F31EADB83B00DBBB4C /* GroundComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroundComponent.swift; sourceTree = "<group>"; };
 		BD2FCF5C1EAC919500FFA9DD /* SKPhysicsContactExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhysicsContactExtension.swift; sourceTree = "<group>"; };
 		BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterNode.swift; sourceTree = "<group>"; };
 		BD3149A31EAB827400DB34EE /* JumpComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
@@ -111,7 +115,6 @@
 				BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */,
 				BD8DD9231EAC67E700F9FFDC /* SKNodeExtension.swift */,
 				BD2FCF5C1EAC919500FFA9DD /* SKPhysicsContactExtension.swift */,
-				BD9ACA8C1EACCAA30099B04A /* PlatformerEntityManager.swift */,
 			);
 			name = Gameutil;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				BD3149A31EAB827400DB34EE /* JumpComponent.swift */,
 				BD2BEF431EAC56A4005A9BE1 /* OscillatorComponent.swift */,
 				BD9ACA8E1EACCD100099B04A /* LandscapeMotionResponderComponent.swift */,
+				BD2DD9F31EADB83B00DBBB4C /* GroundComponent.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -185,6 +189,7 @@
 				BD2BF44B1EAAF65D00CF3595 /* Letter.swift */,
 				BD2BEF411EAC4169005A9BE1 /* Island.swift */,
 				BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */,
+				BD2DD9F11EADB74E00DBBB4C /* Background.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				BD72F59B1EA9FC810036168C /* PlatformerBaseScene.swift */,
+				BD9ACA8C1EACCAA30099B04A /* PlatformerEntityManager.swift */,
 				BD72F5B11EAA06590036168C /* BaseScene.swift */,
 				BD72F5B51EAA0D340036168C /* BaseScene+Pause.swift */,
 				BD2BF4511EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift */,
@@ -291,6 +297,7 @@
 				BD23AC9A1EAB1C150099010D /* EntityManager.swift in Sources */,
 				BD23ACA41EAB27D20099010D /* OrientationComponent.swift in Sources */,
 				BD2BF44A1EAAF63800CF3595 /* CoreMotionInputComponent.swift in Sources */,
+				BD2DD9F41EADB83B00DBBB4C /* GroundComponent.swift in Sources */,
 				BD3149A21EAB5D9A00DB34EE /* LetterNode.swift in Sources */,
 				BD23ACA61EAB28D30099010D /* AnimationComponent.swift in Sources */,
 				BD2BF44C1EAAF65D00CF3595 /* Letter.swift in Sources */,
@@ -312,6 +319,7 @@
 				BD23AC981EAB18A50099010D /* PortraitMotionResponderComponent.swift in Sources */,
 				BD2BEF441EAC56A4005A9BE1 /* OscillatorComponent.swift in Sources */,
 				BD2BF4541EAB017500CF3595 /* NodeNameComponent.swift in Sources */,
+				BD2DD9F21EADB74E00DBBB4C /* Background.swift in Sources */,
 				BD2BF4431EAAF2FC00CF3595 /* PhysicsComponent.swift in Sources */,
 				BD23AC9C1EAB1E3B0099010D /* MainMotionManager.swift in Sources */,
 				BD2BF4521EAAFEDC00CF3595 /* BaseScene+SKPhysicsContactDelegate.swift in Sources */,
