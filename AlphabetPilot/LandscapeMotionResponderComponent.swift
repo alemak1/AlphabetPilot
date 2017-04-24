@@ -62,9 +62,9 @@ class LandscapeMotionResponderComponent: GKComponent{
                 appliedForceDeltaY = CGFloat(horizontalRotationRate)*150.00
             }
             **/
-            print(horizontalAttitude)
+           // print(horizontalAttitude)
             appliedForceDeltaY = CGFloat(horizontalAttitude*500)
-            print("The appliedForceDeltaY is \(appliedForceDeltaY)")
+           // print("The appliedForceDeltaY is \(appliedForceDeltaY)")
         }
     }
     
@@ -81,9 +81,9 @@ class LandscapeMotionResponderComponent: GKComponent{
             }
             **/
             
-            print(verticalAttitude)
+           // print(verticalAttitude)
             appliedForceDeltaX = CGFloat(verticalAttitude*500)
-            print("The appliedForceDeltaX is \(appliedForceDeltaX)")
+           // print("The appliedForceDeltaX is \(appliedForceDeltaX)")
             
         }
     }

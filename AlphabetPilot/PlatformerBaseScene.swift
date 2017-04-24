@@ -16,6 +16,7 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
     var player: Player!
     var worldNode: SKSpriteNode!
     
+    let playerContactNotificationQueue = DispatchQueue(label: "playerBarrierContactNotificationQueue", attributes: .concurrent)
     
     private var lastUpdateTime : TimeInterval = 0
  
@@ -41,20 +42,22 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
         addChild(worldNode)
         
         
-        
+        /**
         let groundTexture = SKTexture(image: #imageLiteral(resourceName: "grassMid"))
         
         let adjustedBottomLeftCorner = CGPoint(x: ScreenPoints.BottomLeftCorner.x, y: ScreenPoints.BottomLeftCorner.y + groundTexture.size().height)
         let adjustedBottomRightCorner = CGPoint(x: ScreenPoints.BottomRightCorner.x, y: ScreenPoints.BottomRightCorner.y + groundTexture.size().height)
         
-        worldNode.physicsBody = SKPhysicsBody(edgeFrom: adjustedBottomLeftCorner, to: adjustedBottomRightCorner)
-        worldNode.physicsBody?.affectedByGravity = false
-        worldNode.physicsBody?.isDynamic = false
-        worldNode.physicsBody?.allowsRotation = false
-        worldNode.physicsBody?.categoryBitMask = CollisionConfiguration.Barrier.categoryMask
-        worldNode.physicsBody?.collisionBitMask = CollisionConfiguration.Barrier.collisionMask
-        worldNode.physicsBody?.contactTestBitMask = CollisionConfiguration.Barrier.contactMask
+        self.physicsBody = SKPhysicsBody(edgeFrom: adjustedBottomLeftCorner, to: adjustedBottomRightCorner)
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.categoryBitMask = CollisionConfiguration.Barrier.categoryMask
+        self.physicsBody?.collisionBitMask = CollisionConfiguration.Barrier.collisionMask
+        self.physicsBody?.contactTestBitMask = CollisionConfiguration.Barrier.contactMask
+        **/
         
+        /**
         let adjustedBottomLeftCornerExtension = CGPoint(x: adjustedBottomLeftCorner.x - 1000, y: adjustedBottomLeftCorner.y)
 
         let extendedPhysicsGround = SKPhysicsBody(edgeFrom: adjustedBottomLeftCorner, to: adjustedBottomLeftCornerExtension)
@@ -64,32 +67,38 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
         extendedPhysicsGround.categoryBitMask = CollisionConfiguration.Barrier.categoryMask
         extendedPhysicsGround.collisionBitMask = CollisionConfiguration.Barrier.collisionMask
         extendedPhysicsGround.contactTestBitMask = CollisionConfiguration.Barrier.contactMask
+        **/
         
+        /**
         let newJoint = SKPhysicsJoint()
         newJoint.bodyA = worldNode.physicsBody!
         newJoint.bodyB = extendedPhysicsGround
-    
+         **/
         
+        /**
         let islandTexture = SKTexture(image: #imageLiteral(resourceName: "ground_grass"))
         let islandNode = SKSpriteNode(texture: islandTexture)
         islandNode.position = CGPoint(x: 100.00, y: 0.00)
         islandNode.physicsBody = SKPhysicsBody(texture: islandTexture, size: islandTexture.size())
         islandNode.physicsBody?.affectedByGravity = false
         islandNode.physicsBody?.isDynamic = false
-        islandNode.physicsBody?.categoryBitMask = CollisionConfiguration.Barrier.categoryMask
-        islandNode.physicsBody?.collisionBitMask = CollisionConfiguration.Barrier.collisionMask
-        islandNode.physicsBody?.contactTestBitMask = CollisionConfiguration.Barrier.contactMask
+        islandNode.physicsBody?.categoryBitMask = CollisionConfiguration.Island.categoryMask
+        islandNode.physicsBody?.collisionBitMask = CollisionConfiguration.Island.collisionMask
+        islandNode.physicsBody?.contactTestBitMask = CollisionConfiguration.Island.categoryMask
         worldNode.addChild(islandNode)
  
+        **/
         
+        let islandSceneRootNode = SKScene(fileNamed: "IslandScene")?.childNode(withName: "RootNode")
+        islandSceneRootNode!.move(toParent: worldNode)
         
      
         
         entityManager = PlatformerEntityManager(scene: self)
         
-        let background = Background()
-        entityManager.addToScene(background)
-        background.completeSceneDependentInitialization()
+        //let background = Background()
+       // entityManager.addToScene(background)
+       // background.completeSceneDependentInitialization()
         
         player = Player()
         entityManager.addToWorld(player)
@@ -163,7 +172,7 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
         
         let nodePositionInScene = self.convert(node.position, from: world)
         
-        world.position = CGPoint(x: world.position.x - nodePositionInScene.x, y: world.position.y)
+        world.position = CGPoint(x: world.position.x - nodePositionInScene.x, y: world.position.y - nodePositionInScene.y)
 
         
     }
@@ -186,7 +195,8 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
         
         switch(otherBody.contactTestBitMask){
             case CollisionConfiguration.Barrier.contactMask:
-                NotificationCenter.default.post(name: Notification.Name.PlayerStartedBarrierContactNotification, object: nil, userInfo: nil)
+              //  NotificationCenter.default.post(name: Notification.Name.PlayerStartedBarrierContactNotification, object: nil, userInfo: nil)
+              
                 break
             default:
                 break
@@ -202,7 +212,9 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
         
         switch(otherBody.contactTestBitMask){
             case CollisionConfiguration.Barrier.contactMask:
-                NotificationCenter.default.post(name: Notification.Name.PlayerStoppedBarrierContactNotification, object: nil, userInfo: nil)
+               // NotificationCenter.default.post(name: Notification.Name.PlayerStoppedBarrierContactNotification, object: nil, userInfo: nil)
+                    
+ 
                 break
             default:
                 break

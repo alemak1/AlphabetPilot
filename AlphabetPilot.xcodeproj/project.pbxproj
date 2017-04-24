@@ -32,6 +32,7 @@
 		BD3149A21EAB5D9A00DB34EE /* LetterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */; };
 		BD3149A41EAB827400DB34EE /* JumpComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A31EAB827400DB34EE /* JumpComponent.swift */; };
 		BD3149A61EAB847000DB34EE /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */; };
+		BD61A6071EADEC2000FEF0A3 /* IslandScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = BD61A6061EADEC2000FEF0A3 /* IslandScene.sks */; };
 		BD72F5961EA9FC810036168C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72F5951EA9FC810036168C /* AppDelegate.swift */; };
 		BD72F59C1EA9FC810036168C /* PlatformerBaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72F59B1EA9FC810036168C /* PlatformerBaseScene.swift */; };
 		BD72F59E1EA9FC810036168C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD72F59D1EA9FC810036168C /* GameViewController.swift */; };
@@ -74,6 +75,7 @@
 		BD3149A11EAB5D9A00DB34EE /* LetterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetterNode.swift; sourceTree = "<group>"; };
 		BD3149A31EAB827400DB34EE /* JumpComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpComponent.swift; sourceTree = "<group>"; };
 		BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
+		BD61A6061EADEC2000FEF0A3 /* IslandScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = IslandScene.sks; sourceTree = "<group>"; };
 		BD72F5921EA9FC810036168C /* AlphabetPilot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlphabetPilot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD72F5951EA9FC810036168C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD72F59B1EA9FC810036168C /* PlatformerBaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformerBaseScene.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */,
 				BD8DD9231EAC67E700F9FFDC /* SKNodeExtension.swift */,
 				BD2FCF5C1EAC919500FFA9DD /* SKPhysicsContactExtension.swift */,
+				BD61A6061EADEC2000FEF0A3 /* IslandScene.sks */,
 			);
 			name = Gameutil;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD72F5A11EA9FC810036168C /* Main.storyboard in Resources */,
+				BD61A6071EADEC2000FEF0A3 /* IslandScene.sks in Resources */,
 				BD72F5A31EA9FC810036168C /* Assets.xcassets in Resources */,
 				BD72F5A61EA9FC810036168C /* LaunchScreen.storyboard in Resources */,
 				BD72F5B01EA9FD250036168C /* OverlayScene1.sks in Resources */,

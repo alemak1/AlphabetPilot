@@ -14,6 +14,7 @@ import SpriteKit
 class JumpComponent: GKComponent{
     
     var canJump: Bool = true
+    var jumpToggleQueue = DispatchQueue(label: "jumpToggleQueue")
     
     override init() {
         super.init()
@@ -50,18 +51,44 @@ class JumpComponent: GKComponent{
         
         guard let physicsBody = entity?.component(ofType: PhysicsComponent.self)?.physicsBody else { return }
         
-        let impulseVector = CGVector(dx: 0.00, dy: 400.00)
-        physicsBody.applyImpulse(impulseVector)
+        
+        if physicsBody.velocity.dy == 0{
+            let impulseVector = CGVector(dx: 0.00, dy: 500.00)
+            physicsBody.applyImpulse(impulseVector)
+
+        }
         
         
     }
     
     func toggleJumpingOn(){
-        canJump = true
+        print("Player can now jump")
+        
+        guard let physicsBody = entity?.component(ofType: PhysicsComponent.self)?.physicsBody else {
+            print("Player must have a physics body in order to enable jumping functionality")
+            return
+        }
+        
+        
+            canJump = true
+        
+        
+
+        
     }
     
     func toggleJumpingOff(){
-        canJump = false 
+        print("Player cannot jump")
+        
+        guard let physicsBody = entity?.component(ofType: PhysicsComponent.self)?.physicsBody else {
+            print("Player must have a physics body in order to enable jumping functionality")
+            return
+        }
+        
+        
+        canJump = false
+        
+        
     }
     
     deinit {

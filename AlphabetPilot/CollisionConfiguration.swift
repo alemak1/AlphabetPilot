@@ -55,25 +55,26 @@ struct CollisionConfiguration: Hashable{
 extension CollisionConfiguration: OptionSet{
     
     static let NoCategory = CollisionConfiguration()
-    static let Player = CollisionConfiguration(rawValue: 1 << 0)
-    static let Letter = CollisionConfiguration(rawValue: 1 << 1)
-    static let Enemy = CollisionConfiguration(rawValue: 1 << 2)
-    static let Barrier = CollisionConfiguration(rawValue: 1 << 3)
-    static let Collectible = CollisionConfiguration(rawValue: 1 << 4)
-    static let NonCollidingEnemy = CollisionConfiguration(rawValue: 1 << 5)
-    static let Portal = CollisionConfiguration(rawValue: 1 << 6)
+    static let Player = CollisionConfiguration(rawValue: 1 << 0)                //1
+    static let Letter = CollisionConfiguration(rawValue: 1 << 1)                //2
+    static let Enemy = CollisionConfiguration(rawValue: 1 << 2)                 //4
+    static let Barrier = CollisionConfiguration(rawValue: 1 << 3)               //8
+    static let Collectible = CollisionConfiguration(rawValue: 1 << 4)           //16
+    static let NonCollidingEnemy = CollisionConfiguration(rawValue: 1 << 5)     //32
+    static let Portal = CollisionConfiguration(rawValue: 1 << 6)                //64
+    static let Island = CollisionConfiguration(rawValue: 1 << 7)                //128
     
     static let definedCollision: [CollisionConfiguration:[CollisionConfiguration]] = [
         CollisionConfiguration.Player :
-            [CollisionConfiguration.Enemy,                                    CollisionConfiguration.Barrier],
+            [CollisionConfiguration.Enemy,                                    CollisionConfiguration.Barrier, CollisionConfiguration.Island],
         
         CollisionConfiguration.Enemy :
-            [CollisionConfiguration.Player, CollisionConfiguration.Barrier],
+            [CollisionConfiguration.Player, CollisionConfiguration.Barrier, CollisionConfiguration.Island],
         CollisionConfiguration.Barrier :
             [CollisionConfiguration.Player, CollisionConfiguration.Enemy, CollisionConfiguration.Letter],
         
         CollisionConfiguration.NonCollidingEnemy : [CollisionConfiguration.NoCategory],
-        CollisionConfiguration.Letter : [CollisionConfiguration.Barrier]
+        CollisionConfiguration.Letter : [CollisionConfiguration.Barrier, CollisionConfiguration.Island]
     ]
     
     static let definedContacts: [CollisionConfiguration:[CollisionConfiguration]] = [
@@ -83,7 +84,8 @@ extension CollisionConfiguration: OptionSet{
         CollisionConfiguration.NonCollidingEnemy:
             [CollisionConfiguration.Player],
         CollisionConfiguration.Letter : [ /** CollisionConfiguration.Player, **/CollisionConfiguration.Barrier],
-        CollisionConfiguration.Portal :      [CollisionConfiguration.Player]
+        CollisionConfiguration.Portal :      [CollisionConfiguration.Player],
+        CollisionConfiguration.Island : [CollisionConfiguration.NoCategory]
     ]
     
 }
