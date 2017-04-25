@@ -112,6 +112,28 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
         
         for node in islandSceneRootNode!.children{
             if var node = node as? SKNode{
+                
+                if node.name == "BladeIsland"{
+                   
+                    if let bladeNode = node.childNode(withName: "Blade") as? SKSpriteNode{
+                        let positionVal = node.userData?.value(forKey: "position") as! NSValue
+                        let position = positionVal.cgPointValue
+                        
+
+                        let texture = SKTexture(image: #imageLiteral(resourceName: "spinnerHalf"))
+                        node = SKSpriteNode(texture: texture)
+                        bladeNode.move(toParent: worldNode)
+                    
+                        bladeNode.position = position
+                    
+                   
+                    
+                        let blade = Blade(spriteNode: bladeNode as! SKSpriteNode)
+                    
+                        newEntities.append(blade)
+                    }
+                }
+                
                 if node.name == "EnemySun"{
                     
                     let positionVal = node.userData?.value(forKey: "position") as! NSValue
@@ -130,6 +152,23 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
                 
                     
                     newEntities.append(enemySun)
+                    
+                }
+                
+                if let nodeName = node.name, nodeName.contains("Letter/"){
+                    let lastChar = nodeName.characters.endIndex
+                    let letterIndex = nodeName.index(before: lastChar)
+                    
+                    let letterString = nodeName.substring(from: letterIndex)
+                    
+                    switch(letterString){
+                        case "A":
+                            break
+                        default:
+                            break
+                    }
+                    
+                    
                 }
             }
         }

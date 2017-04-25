@@ -123,7 +123,6 @@
 				BD3149A51EAB847000DB34EE /* NotificationNameExtension.swift */,
 				BD8DD9231EAC67E700F9FFDC /* SKNodeExtension.swift */,
 				BD2FCF5C1EAC919500FFA9DD /* SKPhysicsContactExtension.swift */,
-				BD61A6061EADEC2000FEF0A3 /* IslandScene.sks */,
 			);
 			name = Gameutil;
 			sourceTree = "<group>";
@@ -155,6 +154,7 @@
 		BD72F5941EA9FC810036168C /* AlphabetPilot */ = {
 			isa = PBXGroup;
 			children = (
+				BDB7D3A31EAF0185004A34C5 /* SKSSceneFiles */,
 				BD9ACA901EACCF1F0099B04A /* Controllers */,
 				BD9ACA8B1EACC9BD0099B04A /* Scenes */,
 				BD3149A01EAB5D7700DB34EE /* NodeSubclasses */,
@@ -224,6 +224,14 @@
 				BD72F59D1EA9FC810036168C /* GameViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BDB7D3A31EAF0185004A34C5 /* SKSSceneFiles */ = {
+			isa = PBXGroup;
+			children = (
+				BD61A6061EADEC2000FEF0A3 /* IslandScene.sks */,
+			);
+			name = SKSSceneFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
