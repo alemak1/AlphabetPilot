@@ -49,6 +49,7 @@
 		BD8DD9261EAC6E6200F9FFDC /* InProgressWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */; };
 		BD9ACA8D1EACCAA30099B04A /* PlatformerEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9ACA8C1EACCAA30099B04A /* PlatformerEntityManager.swift */; };
 		BD9ACA8F1EACCD100099B04A /* LandscapeMotionResponderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9ACA8E1EACCD100099B04A /* LandscapeMotionResponderComponent.swift */; };
+		BDB7D3A21EAEF674004A34C5 /* Blade.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB7D3A11EAEF674004A34C5 /* Blade.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressWord.swift; sourceTree = "<group>"; };
 		BD9ACA8C1EACCAA30099B04A /* PlatformerEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlatformerEntityManager.swift; sourceTree = "<group>"; };
 		BD9ACA8E1EACCD100099B04A /* LandscapeMotionResponderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandscapeMotionResponderComponent.swift; sourceTree = "<group>"; };
+		BDB7D3A11EAEF674004A34C5 /* Blade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blade.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				BD8DD9251EAC6E6200F9FFDC /* InProgressWord.swift */,
 				BD2DD9F11EADB74E00DBBB4C /* Background.swift */,
 				BD2B682F1EAE0FFA0095A122 /* EnemySun.swift */,
+				BDB7D3A11EAEF674004A34C5 /* Blade.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				BD8DD9241EAC67E700F9FFDC /* SKNodeExtension.swift in Sources */,
 				BD2FCF5D1EAC919500FFA9DD /* SKPhysicsContactExtension.swift in Sources */,
 				BD72F5AE1EA9FC930036168C /* PauseOverlayNode.swift in Sources */,
+				BDB7D3A21EAEF674004A34C5 /* Blade.swift in Sources */,
 				BD23AC9A1EAB1C150099010D /* EntityManager.swift in Sources */,
 				BD23ACA41EAB27D20099010D /* OrientationComponent.swift in Sources */,
 				BD2BF44A1EAAF63800CF3595 /* CoreMotionInputComponent.swift in Sources */,

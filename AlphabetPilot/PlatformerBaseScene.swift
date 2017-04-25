@@ -127,6 +127,8 @@ class PlatformerBaseScene: SKScene, SKPhysicsContactDelegate {
                     
                     let enemySun = EnemySun(spriteNode: node as! SKSpriteNode, targetAgent: playerAgent)
                     
+                
+                    
                     newEntities.append(enemySun)
                 }
             }

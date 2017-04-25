@@ -30,7 +30,7 @@ class EnemySun: GKEntity{
         
         
         if let targetAgent = targetAgent{
-            let agentComponent = AgentComponent(targetAgent: targetAgent, obstacles: [])
+            let agentComponent = AgentComponent(targetAgent: targetAgent, maxPredictionTime: 10.00, maxSpeed: 1.00, maxAcceleration: 1.00, lerpingEnabled: true)
             addComponent(agentComponent)
         }
         

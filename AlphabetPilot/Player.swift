@@ -70,9 +70,13 @@ class Player: GKEntity{
         addComponent(jumpComponent)
         
         
-        let defaultAgent = GKAgent2D()
-        let agentComponent = AgentComponent(defaultAgent: defaultAgent)
+        //The player's agent component is passive i.e. it updates its position and velocity to accommodate the movement of the player
+        
+        
+        let passiveAgent = GKAgent2D()
+        let agentComponent = AgentComponent(passiveAgent: passiveAgent, lerpingEnabled: false)
         addComponent(agentComponent)
+    
         
         //The player is scaled down after the physics body is added so that the physics body scaled down along with the node texture
         

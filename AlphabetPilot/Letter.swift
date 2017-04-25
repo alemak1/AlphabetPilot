@@ -34,6 +34,23 @@ class Letter: GKEntity{
         renderComponent.node = letterNode
         addComponent(renderComponent)
         
+        
+
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    func addPhysicsComponent(letterCategory: LetterNode.LetterCategory, letterMass: CGFloat){
+        
+        guard let letterNode = component(ofType: RenderComponent.self)?.node else {
+                print("AN entity must have a render component in order for a physics component to be added")
+                return
+        }
+        
         let letterTexture = letterCategory.texture
         let letterTextureSize  = letterTexture.size()
         
@@ -43,47 +60,46 @@ class Letter: GKEntity{
         addComponent(physicsComponent)
         
         
+    }
+    
+    func addContactHandlerComponent(letterCategory: LetterNode.LetterCategory){
         let contactHandlerComponent = ContactHandlerComponent(categoryContactHandler:  {
-        
+            
             otherCategoryBitmask in
             
             let renderComponent = self.component(ofType: RenderComponent.self)
             
             switch(otherCategoryBitmask){
-                case CollisionConfiguration.Barrier.categoryMask:
-                    //print("Letter \(letterCategory.stringLetter) hit the barrier")
-                    
-                    /**
-                    spriteNode.run(SKAction.fadeAlpha(to: 0.00, duration: 2.0), completion: {
-                        spriteNode.physicsBody?.affectedByGravity = false
-                        spriteNode.position = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.90), y: Int(ScreenSizeConstants.ScreenHeight+100))
-                        
-
-                    })
-                    
-                    spriteNode.run(SKAction.wait(forDuration: 10), completion: {
-                        spriteNode.physicsBody?.affectedByGravity = true
-                    })
-                    **/
-                    break
-                case CollisionConfiguration.Player.categoryMask:
-                    print("Letter \(letterCategory.stringLetter) hit the player")
-                    
-                    let nc = NotificationCenter.default
-                    let userInfo = ["letter": letterCategory.letter]
-                    nc.post(name: Notification.Name.PlayerDidContactLetterNotification, object: nil, userInfo: userInfo)
-                    break
-                default:
-                    print("No contact logic implemented")
+            case CollisionConfiguration.Barrier.categoryMask:
+                //print("Letter \(letterCategory.stringLetter) hit the barrier")
+                
+                /**
+                 spriteNode.run(SKAction.fadeAlpha(to: 0.00, duration: 2.0), completion: {
+                 spriteNode.physicsBody?.affectedByGravity = false
+                 spriteNode.position = CGPoint(x: RandomGenerator.getRandomXPos(adjustmentFactor: 0.90), y: Int(ScreenSizeConstants.ScreenHeight+100))
+                 
+                 
+                 })
+                 
+                 spriteNode.run(SKAction.wait(forDuration: 10), completion: {
+                 spriteNode.physicsBody?.affectedByGravity = true
+                 })
+                 **/
+                break
+            case CollisionConfiguration.Player.categoryMask:
+                print("Letter \(letterCategory.stringLetter) hit the player")
+                
+                let nc = NotificationCenter.default
+                let userInfo = ["letter": letterCategory.letter]
+                nc.post(name: Notification.Name.PlayerDidContactLetterNotification, object: nil, userInfo: userInfo)
+                break
+            default:
+                print("No contact logic implemented")
             }
         } , nodeContactHandler: nil, categoryEndContactHandler: nil, nodeEndContactHandler: nil)
         
         addComponent(contactHandlerComponent)
-
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        
     }
     
     
